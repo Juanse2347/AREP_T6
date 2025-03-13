@@ -127,18 +127,17 @@ El despliegue de la aplicación se gestionará usando AWS. Utilizaremos servicio
 
 ## 🚀 Despliegue AWS
 
-Creamos las dos instancias en AWS EC2.
+Creamos la instancia en AWS EC2.
 
-![image](https://github.com/user-attachments/assets/3f41dff7-e699-4053-9087-8e3b3a2a4d3d)
-
-
-Ahora configura el grupo de seguridad de la instancia EC2 para permitir el tráfico entrante en el puerto 8080 (o el puerto que hayas configurado en tu aplicación Spring Boot).
+![image](https://github.com/user-attachments/assets/235034e2-76fb-4234-aa50-fb34a714b1f4)
 
 
-![image](https://github.com/user-attachments/assets/0855c555-704d-4d8c-85bc-4e6784f21c97)
+Ahora configuramos el grupo de seguridad de la instancia EC2 para permitir el tráfico entrante en el puerto 50000 (o el puerto que hayas configurado en tu aplicación Spring Boot).
 
 
-Asegúrate de que la base de datos MySQL esté accesible desde la instancia EC2.
+![image](https://github.com/user-attachments/assets/520a5553-1dc2-4a30-9930-c02f078a3a10)
+
+
 
 
 Desplegamos nuestro codigo en AWS
