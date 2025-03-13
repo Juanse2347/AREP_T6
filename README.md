@@ -34,16 +34,15 @@ Se ejecuta localmente en contenedores Docker y también puede ser desplegada en 
 - Java 11 o superior
 - Git
 - Maven
-- Docker
 - AWS EC2
-- MySQL
+
 
 
 ## 🚀 Instalación y Ejecución
 ### 1️⃣ Clonar el repositorio
 ```bash
-git clone https://github.com/Juanse2347/AREP_T5
-cd AREP_T5
+git clone https://github.com/Juanse2347/AREP_T6
+cd AREP_T6
 ```
 
 ### 2️⃣ Compilar el proyecto con Maven
