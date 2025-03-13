@@ -148,6 +148,9 @@ Desplegamos nuestro codigo en AWS
 scp -i key.pem target/app.jar ec2-user@IP_EC2:/home/ec2-user/
 ```
 
+![image](https://github.com/user-attachments/assets/1fcd2f17-f047-4315-81a2-94ea82c06c18)
+
+
 2. Conectamos a nuestra instancia EC2
 
 ```bash
@@ -163,47 +166,12 @@ java -jar /home/ec2-user/app.jar
 4. Y para finalizar accedemos a la aplicacion
 
 ```bash
-http://EC2_PUBLIC_IP:8080/index.html
+http://EC2_PUBLIC_IP:5000/
 ```
 
 Que se veria de la siguiente manera
 
-![image](https://github.com/user-attachments/assets/932d8b33-db0c-460c-adad-ec8b921410fe)
-
-
-## 🚀 Configuración de la Base de Datos
-
-Creamos una base de datos en MySQL
-
-```sql
-CREATE DATABASE propertydb;
-CREATE USER 'arep'@'%' IDENTIFIED BY 'Arep2025@';
-GRANT ALL PRIVILEGES ON propertydb.* TO 'arep'@'%';
-FLUSH PRIVILEGES;
-```
-
-Creamos los atributos y datos para nuestra tabla:
-
-
-```sql
-CREATE TABLE properties (
-  id BIGINIT AUTO_INCREMENT PRIMARY KEY,
-  address VARCHAR(255) NOT NULL,
-  price DOUBLE NOT NULL,
-  size INT NOT NULL,
-  description VARCHAR(255) NOT NULL
-);
-```
-
-Que agregamos a nuestra instancia en AWS, de la siguiente manera:
-
-![image](https://github.com/user-attachments/assets/f3384e11-d0c7-46b3-9d54-af24b4b134bc)
-
-
-Ahora abrimos los puertos de entrada del security group de la máxima virtual para acceder al servicio
-
-![image](https://github.com/user-attachments/assets/752d80f0-d46e-4e39-944c-958d4ab4c810)
-
+![image](https://github.com/user-attachments/assets/a438e938-a59a-4055-9781-2b6102e5eeae)
 
 
 ## 🔍 Pruebas de Estilo de Codificacion ##
