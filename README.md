@@ -16,10 +16,10 @@ In this workshop, we will design and deploy a secure, scalable application using
 Este sistema CRUD permite gestionar anuncios de propiedades inmobiliarias. Los usuarios pueden crear, leer, actualizar y eliminar propiedades a través de una interfaz web sencilla y un backend implementado con Spring Boot.
 
 
-- Crear: Permite a los usuarios agregar nuevos anuncios de propiedades con detalles como dirección, precio, tamaño y descripción.
-- Leer: Muestra una lista de todas las propiedades disponibles y permite ver los detalles individuales de cada propiedad.
-- Actualizar: Permite editar la información de una propiedad existente.
-- Eliminar: Permite eliminar una propiedad de la base de datos.
+-**TLS Encryption**: Secure transmission of data using TLS certificates generated through Let’s Encrypt, ensuring confidentiality and integrity.
+-**Asynchronous Client**: Our HTML+JavaScript client will leverage async techniques to optimize performance while maintaining secure communication.
+-**Login Security**: We will implement login authentication, with passwords securely stored as hashes.
+-**AWS Deployment**: All services will be deployed and managed on AWS, leveraging its secure, reliable infrastructure.
 
 Despliegue de los servicios de backend y base de datos en servidores separados dentro de de AWS
   
