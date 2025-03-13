@@ -1,11 +1,11 @@
-# Taller de trabajo individual en patrones arquitecturales
+# Enterprise Architecture Workshop: Security Application Design
 
-Students are tasked with developing a simple CRUD (Create, Read, Update, Delete) system for managing real estate properties. The goal is to build a basic web application that allows users to perform the following operations on property listings:
+In this workshop, we will design and deploy a secure, scalable application using AWS infrastructure with a focus on best practices for security. Our architecture will feature two primary components:
 
-- Create new property listings.
-- Read or view a list of all properties and individual property details.
-- Update existing property details.
-- Delete property listings
+- **Server 1**: Apache Server
+  The Apache server will be responsible for serving an asynchronous HTML+JavaScript client over a secure connection using TLS. Client-side code will be delivered through encrypted channels, ensuring data integrity and confidentiality during download.
+- **Server 2**: Spring Framework
+  The Spring server will handle backend services, offering RESTful API endpoints. These services will also be protected using TLS, ensuring secure communication between the client and the backend.
 
 
 ## 📌 Características
