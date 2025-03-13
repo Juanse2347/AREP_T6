@@ -13,7 +13,7 @@ In this workshop, we will design and deploy a secure, scalable application using
 
 # Funcionalidades Principales
 
-Este sistema CRUD permite gestionar anuncios de propiedades inmobiliarias. Los usuarios pueden crear, leer, actualizar y eliminar propiedades a través de una interfaz web sencilla y un backend implementado con Spring Boot.
+En este taller, diseñaremos y desplegaremos una aplicación segura y escalable utilizando infraestructura de AWS, con un enfoque en las mejores prácticas de seguridad. Las funcionalidades principales de la aplicación incluyen:
 
 
 - **TLS Encryption**: Secure transmission of data using TLS certificates generated through Let’s Encrypt, ensuring confidentiality and integrity.
@@ -35,6 +35,7 @@ Se ejecuta localmente en contenedores Docker y también puede ser desplegada en 
 - Git
 - Maven
 - AWS EC2
+- Spring Framework
 
 
 
@@ -50,7 +51,8 @@ cd AREP_T6
 mvn clean install
 ```
 
-![Image](https://github.com/user-attachments/assets/0a5c2877-e890-4901-a25a-0cfa24bdb6ee)
+![image](https://github.com/user-attachments/assets/2755aea0-a8ef-488d-9d1a-54eb748878a1)
+
 
 
 ### 3️⃣ Ejecutar el servidor 
@@ -59,8 +61,17 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-![image](https://github.com/user-attachments/assets/03293b31-728d-4a8c-ac17-72b71f5412c0)
+![image](https://github.com/user-attachments/assets/6c7fafa7-4cb3-4ff1-b947-8fc43a8faa7d)
 
+
+Probamos en el navegador lo siguiente:
+
+```bash
+https://localhost:5000
+```
+
+
+![image](https://github.com/user-attachments/assets/d2d9c003-4126-4db8-987b-f9b9d96cb7ea)
 
 
 ## 🔍 Diseño de Clases 
@@ -68,12 +79,12 @@ mvn spring-boot:run
 Clases Principales
 
 > [!IMPORTANT]
->  - **Property**: Representa la entidad de propiedad con los atributos id, address, price, size, y description.
->  - **PropertyService**: Contiene la lógica del negocio para gestionar las operaciones CRUD de las propiedades.
->  - **PropertyController**: Proporciona los endpoints RESTful para interactuar con el frontend.
+>  - **HelloController**: Representa la entidad de propiedad con los atributos id, address, price, size, y description.
+>  - **SecureURLReader**: Contiene la lógica del negocio para gestionar las operaciones CRUD de las propiedades.
+>  - **Secureweb**: Proporciona los endpoints RESTful para interactuar con el frontend.
 
 
-![image](https://github.com/user-attachments/assets/a10ca6fa-8513-4c8c-a72d-7a8d74b1d3c9)
+![image](https://github.com/user-attachments/assets/17c1bbfb-18e4-4341-a457-6738dcf3472f)
 
 
 # 🔍 Sistema Arquitectónico
@@ -81,9 +92,37 @@ Clases Principales
 El sistema consta de tres componentes principales:
 
 
-- **Frontend (HTML, JavaScript)**: Proporciona la interfaz de usuario para interactuar con las propiedades (crear, leer, actualizar, eliminar).
-- **Backend (Spring Boot)**: Proporciona la API RESTful para gestionar las propiedades, implementando los métodos POST, GET, PUT y DELETE.
-- **Base de Datos (MySQL en AWS RDS)**: Almacena los datos de las propiedades y asegura su persistencia.
+### 1. **Servidor Apache**
+
+- **Rol:** Servir contenido estático (HTML+JavaScript) de manera segura.
+- **Tecnología:** Apache HTTP Server.
+- **Seguridad:** Implementación de TLS para asegurar la transmisión de contenido estático. El servidor es configurado para entregar contenido a través de conexiones cifradas (HTTPS).
+- **Certificados SSL:** Se utilizarán certificados generados por Let's Encrypt para asegurar las conexiones.
+  
+### 2. **Servidor Spring Framework**
+
+- **Rol:** Proveer los servicios backend mediante APIs RESTful.
+- **Tecnología:** Spring Framework.
+- **Seguridad:** Implementación de TLS para asegurar que las comunicaciones entre el cliente y la API estén cifradas.
+- **Certificados SSL:** Certificados generados por Let's Encrypt para asegurar las conexiones HTTPS.
+
+### 3. **Cliente HTML+JavaScript (Asíncrono)**
+
+- **Rol:** Interfaz de usuario que interactúa con el servidor backend utilizando AJAX y técnicas asincrónicas.
+- **Tecnología:** HTML, JavaScript, y AJAX.
+- **Seguridad:** Las solicitudes AJAX se realizan de manera segura a través de HTTPS, garantizando la protección de los datos en tránsito.
+
+### 4. **Seguridad del Login**
+
+- **Autenticación:** El sistema de login estará protegido con autenticación de usuario. Las contraseñas se almacenarán de forma segura utilizando hashing (por ejemplo, bcrypt) en lugar de almacenamiento en texto plano.
+  
+### 5. **Despliegue en AWS**
+
+El despliegue de la aplicación se gestionará usando AWS. Utilizaremos servicios como EC2 para alojar los servidores Apache y Spring, y S3 o RDS para almacenamiento adicional según sea necesario.
+
+- **AWS EC2:** Instancias que alojarán el servidor Apache y el servidor Spring.
+- **AWS ELB (Elastic Load Balancer):** Para distribuir el tráfico entre las instancias si se requiere escalabilidad.
+- **AWS S3/RDS:** Opcional, dependiendo de los requisitos de almacenamiento.
 
 
 ## 🚀 Despliegue AWS
